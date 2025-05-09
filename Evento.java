@@ -1,6 +1,6 @@
-public abstract class Evento implements Comparable {
+public abstract class Evento implements Comparable <Evento> {
 
-	private static int codGeralSequencial = 0;
+	private static int codGeralSequencial = 0; //definindo o codigo sequencial iniciando em zero
 
 	private int codigo;
 
@@ -10,32 +10,42 @@ public abstract class Evento implements Comparable {
 
 	private int nroParticipantes;
 
-	public Evento(String titulo, String nomeProfessor, int nroParticip) {
-
+	//construtor
+	public Evento(int codigo, String titulo, String nomeProfResponsavel, int nroParticipantes) {
+		codGeralSequencial++; //codigo sequencial -> codgeralSequencial = ** + 1;
+		this.codigo = codigo;
+		this.titulo = titulo;
+		this.nomeProfResponsavel = nomeProfResponsavel;
+		this.nroParticipantes = nroParticipantes;
 	}
 
+	//getters
 	public int getCodigo() {
-		return 0;
+		return codigo;
 	}
 
 	public String getTitulo() {
-		return null;
+		return titulo;
 	}
 
 	public String getNomeProfResponsavel() {
-		return null;
+		return nomeProfResponsavel;
 	}
 
 	public int getNroParticipantes() {
-		return 0;
+		return nroParticipantes;
 	}
 
 	public String toString() {
-		return null;
+		return "Dados do evento:\n" +
+				"Codigo:" + codGeralSequencial +
+				"Titulo:" + titulo +
+				"Professor responsavel:" + nomeProfResponsavel +
+				"Numero de Participantes:" + nroParticipantes;
 	}
 
 	public int compareTo(Evento outroEvento) {
-		return 0;
+		return this.getCodigo() - outroEvento.getCodigo();
 	}
 
 }
